@@ -260,7 +260,7 @@ void test_join_bind() {
         std::string abc("abc");
         boost::fibers::fiber f(
             boost::fibers::launch::dispatch, std::bind(
-                []( int i, std::string & str) {
+                []( int, std::string & str) {
                     value1 = 3;
                     value2 = str;
                 },
@@ -278,7 +278,7 @@ void test_join_bind() {
         std::string abc("abc");
         boost::fibers::fiber f(
             boost::fibers::launch::dispatch, std::bind(
-                []( int i, std::string & str) {
+                []( int, std::string & str) {
                     value1 = 3;
                     value2 = str;
                 },
