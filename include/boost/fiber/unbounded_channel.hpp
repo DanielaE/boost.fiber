@@ -137,7 +137,7 @@ private:
         tail_ = & new_node->nxt;
     }
 
-    value_type value_pop_( std::unique_lock< mutex > & lk) {
+    value_type value_pop_( std::unique_lock< mutex > &) {
         BOOST_ASSERT( ! is_empty_() );
         auto old_head = pop_head_();
         return std::move( old_head->va);
