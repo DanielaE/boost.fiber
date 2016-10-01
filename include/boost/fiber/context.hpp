@@ -49,7 +49,7 @@
 
 #ifdef _MSC_VER
 # pragma warning(push)
-# pragma warning(disable:4251)
+# pragma warning(disable:4251 4324)
 #endif
 
 namespace boost {
@@ -427,6 +427,7 @@ private:
 #if (defined(BOOST_USE_UCONTEXT)||defined(BOOST_USE_WINFIB))
             std::move( c).resume();
 #endif
+            (void)c;
 #if defined(BOOST_NO_CXX17_STD_APPLY)
            boost::context::detail::apply( std::move( fn), std::move( arg) );
 #else
