@@ -20,6 +20,11 @@
 #include <boost/fiber/detail/config.hpp>
 #include <boost/fiber/context.hpp>
 
+#ifdef BOOST_MSVC
+#  pragma warning(push)
+#  pragma warning(disable: 4324) // structure was padded due to alignment specifier
+#endif
+
 // David Chase and Yossi Lev. Dynamic circular work-stealing deque.
 // In SPAA ’05: Proceedings of the seventeenth annual ACM symposium
 // on Parallelism in algorithms and architectures, pages 21–28,
@@ -194,6 +199,10 @@ public:
 
 #if BOOST_COMP_CLANG
 #pragma clang diagnostic pop
+#endif
+
+#ifdef BOOST_MSVC
+#  pragma warning(pop)
 #endif
 
 #endif // BOOST_FIBERS_DETAIL_CONTEXT_SPMC_QUEUE_H

@@ -24,7 +24,7 @@ typedef std::chrono::milliseconds ms;
 int value = 0;
 
 inline
-std::chrono::system_clock::time_point delay(int secs, int msecs=0, int nsecs=0) {
+std::chrono::system_clock::time_point delay(int secs, int msecs=0, int =0) {
     std::chrono::system_clock::time_point t = std::chrono::system_clock::now();
     t += std::chrono::seconds( secs);
     t += std::chrono::milliseconds( msecs);
