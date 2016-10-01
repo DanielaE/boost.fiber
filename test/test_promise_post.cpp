@@ -13,6 +13,10 @@
 
 #include <boost/fiber/all.hpp>
 
+#if defined(BOOST_MSVC)
+# pragma warning(disable: 4702) // unreachable code
+#endif
+
 int gi = 7;
 
 struct my_exception : public std::runtime_error {

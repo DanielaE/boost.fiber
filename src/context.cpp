@@ -34,6 +34,7 @@ private:
 #if (defined(BOOST_USE_UCONTEXT)||defined(BOOST_USE_WINFIB))
         std::move( c).resume();
 #endif
+        (void)c;
 		// execute scheduler::dispatch()
 		return get_scheduler()->dispatch();
     }

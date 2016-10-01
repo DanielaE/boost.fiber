@@ -15,6 +15,10 @@
 
 #include <boost/fiber/all.hpp>
 
+#if defined(BOOST_MSVC)
+# pragma warning(disable: 4702) // unreachable code
+#endif
+
 typedef std::chrono::milliseconds ms;
 typedef std::chrono::high_resolution_clock Clock;
 
