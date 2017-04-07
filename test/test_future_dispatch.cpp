@@ -17,6 +17,13 @@
 
 #if defined(BOOST_MSVC)
 # pragma warning(disable: 4702) // unreachable code
+
+#include <crtdbg.h>
+#define NO_ERROR_POPUP \
+  _CrtSetReportMode(_CRT_ERROR, _CRTDBG_MODE_FILE); \
+  _CrtSetReportFile(_CRT_ERROR, _CRTDBG_FILE_STDERR);
+#else
+#define NO_ERROR_POPUP
 #endif
 
 typedef std::chrono::milliseconds ms;
@@ -541,6 +548,8 @@ void test_future_wait_with_fiber_2() {
 
 
 boost::unit_test_framework::test_suite* init_unit_test_suite(int, char*[]) {
+	NO_ERROR_POPUP
+
     boost::unit_test_framework::test_suite* test =
         BOOST_TEST_SUITE("Boost.Fiber: future test suite");
 
