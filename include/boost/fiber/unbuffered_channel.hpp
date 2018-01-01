@@ -612,7 +612,7 @@ public:
         }
     }
 
-    class iterator : public std::iterator< std::input_iterator_tag, typename std::remove_reference< value_type >::type > {
+    class iterator {
     private:
         typedef typename std::aligned_storage< sizeof( value_type), alignof( value_type) >::type  storage_type;
 
@@ -629,8 +629,14 @@ public:
         }
 
     public:
-        typedef typename iterator::pointer pointer_t;
-        typedef typename iterator::reference reference_t;
+        typedef std::input_iterator_tag iterator_category;
+        typedef typename std::remove_reference< value_type >::type value_type;
+        typedef std::ptrdiff_t difference_type;
+        typedef value_type * pointer;
+        typedef value_type & reference;
+
+        typedef pointer   pointer_t;
+        typedef reference reference_t;
 
         iterator() noexcept = default;
 
